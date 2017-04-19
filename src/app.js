@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleWare } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers/';
@@ -26,7 +26,8 @@ class App extends Component {
 	render() {
 		// second argument is for any initial state we would want to add in 
 		// third argument is a store enhancer
-		const store = createStore(reducers, {}, applyMiddleWare(ReduxThunk));
+	    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+
 		return (
 			<Provider store={store}>
 				<LoginForm />
