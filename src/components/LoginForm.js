@@ -32,9 +32,7 @@ class LoginForm extends Component {
 					/>
 				</CardSection>
 
-				<Text style={styles.error}>
-					{this.props.error}
-				</Text>
+				
 
 				<CardSection>
 					<Input
@@ -51,6 +49,10 @@ class LoginForm extends Component {
 						Login
 					</Button>
 				</CardSection>
+
+				<Text style={styles.errorTextStyle}>
+					{this.props.error}
+				</Text>
 			</Card>
 		);
 	}
