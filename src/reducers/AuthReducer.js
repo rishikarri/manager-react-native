@@ -7,7 +7,6 @@ const initialState = { email: ' ', password: '', user: null };
 //if email already has a property, it will be overwritten by the one we just had 
 
 export default (state = initialState, action) => {
-	console.log(action);
 
 	switch (action.type) {
 		case EMAIL_CHANGED:
@@ -18,6 +17,9 @@ export default (state = initialState, action) => {
 
 		case LOGIN_USER_SUCCESS: 
 			return { ...state, user: action.payload };
+
+		case LOGIN_USER_FAIL: 
+			return { ...state, error: 'Authentication Failed', password: '' };
 
 		default: 
 			return state;

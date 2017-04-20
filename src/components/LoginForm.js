@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Text } from 'react-native';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 
@@ -31,6 +32,10 @@ class LoginForm extends Component {
 					/>
 				</CardSection>
 
+				<Text style={styles.error}>
+					{this.props.error}
+				</Text>
+
 				<CardSection>
 					<Input
 						secureTextEntry
@@ -51,10 +56,18 @@ class LoginForm extends Component {
 	}
 }
 
-const mapStateToProps = state => {
+const styles = {
+	errorTextStyle: {
+		fontSize: 20, 
+		alignSelf: 'center',
+		color: 'red'
+	}
+}
+const mapStateToProps = ({ auth }) => {
+
+	const { email, password, error } = auth;
 	return {
-		email: state.auth.email,
-		password: state.auth.password
+		email, password, error
 	};
 };
 
